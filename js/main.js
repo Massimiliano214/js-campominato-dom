@@ -23,8 +23,6 @@ function createNewSquare() {
     const levelDom = document.getElementById("difficolta");
     level = levelDom.value;
 
-    console.log("numero caselle " + level);
-
     let cells;
     let cellForSide;
 
@@ -40,14 +38,14 @@ function createNewSquare() {
     quadratiDaMettere(cells, cellForSide, level);
 
     
-
-    for (i = 0; i < 16; i++) {
+    while (deathList.length < 16) {
         const numberChosen = deathNote(level);
-        if (!deathList.includes(i)) {
-            deathList.push(numberChosen);
+        if (deathList.includes(numberChosen)) {
+            deathNote(level);
         } else {
-            i--;
+            deathList.push(numberChosen);
         }
+        
     };
     console.log(deathList);
 };
@@ -70,10 +68,8 @@ function quadratiDaMettere(cells, cellForSide, level) {
                 this.classList.add("bomb");
                 dead = true;
                 console.log(dead);
-            } else if (dead == true) {
-                console.log(dead);
                 scoreDom.innerHTML ="la partita è finita, hai perso " + scoreCheck;
-                //currentCell[deathList].classList.add("bomb");
+
             } else if (dead == false) {
                 console.log(dead);
                 scoreCheck++;
@@ -84,7 +80,8 @@ function quadratiDaMettere(cells, cellForSide, level) {
                 scoreDom.innerHTML ="la partita è finita, hai Vinto " + scoreCheck;
                 scoreDom.innerHTML = scoreCheck;
             }
-            
+                            //currentCell[deathList].classList.add("bomb");
+
             console.log(i);
         });
 
