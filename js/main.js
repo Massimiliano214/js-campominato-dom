@@ -1,7 +1,7 @@
 let gameStart = document.getElementById("avvioGioco");
 let deathList = [];
 
-scoreCheck = 0;
+let scoreCheck = 0;
 
 
 
