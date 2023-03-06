@@ -37,13 +37,13 @@ function createNewSquare() {
     }
 
     cellForSide = Math.sqrt(cells);
-    quadratiDaMettere(cells, cellForSide);
+    quadratiDaMettere(cells, cellForSide, level);
 
     i = 0;
 
     while (i < 16) {
         const numberChosen = deathNote(level);
-        if (numberChosen != deathList[i]) {
+        if (!deathList.includes(i)) {
         deathList.push(numberChosen);
         i++;
         }
@@ -51,9 +51,10 @@ function createNewSquare() {
     console.log(deathList);
 };
 
-function quadratiDaMettere(cells, cellForSide) {
+function quadratiDaMettere(cells, cellForSide, level) {
     const gridDom = document.querySelector(".containerSquares");
     gridDom.innerHTML = "";
+    let dead = false;
     for (let i = 1; i <= cells; i++) {
         
         let currentCell= ownCell(cellForSide, i)
@@ -62,14 +63,27 @@ function quadratiDaMettere(cells, cellForSide) {
             console.log(i);
             
             let scoreDom = document.querySelector(".score");
+            
+            
             if(deathList.includes(i)) {
                 this.classList.add("bomb");
-                
-            } else {
+                dead = true;
+                console.log(dead);
+            } else if (dead == true) {
+                console.log(dead);
+                scoreDom.innerHTML ="la partita è finita, hai perso " + scoreCheck;
+                //currentCell[deathList].classList.add("bomb");
+            } else if (dead == false) {
+                console.log(dead);
                 scoreCheck++;
                 this.classList.toggle("clicked");
                 scoreDom.innerHTML = scoreCheck;
+            } else if ((dead == false) && (scoreCheck == (level - 16)))  {
+                console.log(dead);
+                scoreDom.innerHTML ="la partita è finita, hai Vinto " + scoreCheck;
+                scoreDom.innerHTML = scoreCheck;
             }
+            
             console.log(i);
         });
 
