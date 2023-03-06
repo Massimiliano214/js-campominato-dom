@@ -11,6 +11,8 @@ gameStart.addEventListener("click",
         const currentElement = document.querySelector(".mainBottom");
         currentElement.classList.toggle("containerList");
         deathList = [];
+        let scoreDom = document.querySelector(".score");
+        scoreDom.innerHTML = 0;
         
         createNewSquare();
     }
@@ -74,8 +76,9 @@ function quadratiDaMettere(cells, cellForSide, level) {
                 console.log(dead);
                 scoreCheck++;
                 this.classList.toggle("clicked");
+                console.log(scoreCheck + level + "scorecheck");
                 scoreDom.innerHTML = scoreCheck;
-            } else if ((dead == false) && (scoreCheck == (level - 16)))  {
+            } else if (scoreCheck > (level - 17)) {
                 console.log(dead);
                 scoreDom.innerHTML ="la partita è finita, hai Vinto " + scoreCheck;
                 scoreDom.innerHTML = scoreCheck;
