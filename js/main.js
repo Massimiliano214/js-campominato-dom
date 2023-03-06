@@ -39,13 +39,14 @@ function createNewSquare() {
     cellForSide = Math.sqrt(cells);
     quadratiDaMettere(cells, cellForSide, level);
 
-    i = 0;
+    
 
-    while (i < 16) {
+    for (i = 0; i < 16; i++) {
         const numberChosen = deathNote(level);
         if (!deathList.includes(i)) {
-        deathList.push(numberChosen);
-        i++;
+            deathList.push(numberChosen);
+        } else {
+            i--;
         }
     };
     console.log(deathList);
