@@ -1,7 +1,7 @@
 let gameStart = document.getElementById("avvioGioco");
 let deathList = [];
 
-
+scoreCheck = 0;
 
 
 
@@ -60,11 +60,15 @@ function quadratiDaMettere(cells, cellForSide) {
 
         currentCell.addEventListener("click", function(){
             console.log(i);
+            
+            let scoreDom = document.querySelector(".score");
             if(deathList.includes(i)) {
                 this.classList.add("bomb");
                 
             } else {
+                scoreCheck++;
                 this.classList.toggle("clicked");
+                scoreDom.innerHTML = scoreCheck;
             }
             console.log(i);
         });
