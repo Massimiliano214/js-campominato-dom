@@ -10,6 +10,7 @@ gameStart.addEventListener("click",
     function() {
         const currentElement = document.querySelector(".mainBottom");
         currentElement.classList.toggle("containerList");
+        deathList = [];
         
         createNewSquare();
     }
@@ -58,7 +59,13 @@ function quadratiDaMettere(cells, cellForSide) {
         let currentCell= ownCell(cellForSide, i)
 
         currentCell.addEventListener("click", function(){
-            this.classList.toggle("clicked");
+            console.log(i);
+            if(deathList.includes(i)) {
+                this.classList.add("bomb");
+                
+            } else {
+                this.classList.toggle("clicked");
+            }
             console.log(i);
         });
 
